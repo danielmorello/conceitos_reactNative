@@ -22,7 +22,11 @@ export default function App() {
   });
 
   async function handleLikeRepository(id) {
-    await api.post(`repositories/${id}/like`);
+    const response = await api.post(`repositories/${id}/like`);
+
+    const repository = response.data;
+
+    setRepositories([...repositories, repository]);
   }
 
   return (
